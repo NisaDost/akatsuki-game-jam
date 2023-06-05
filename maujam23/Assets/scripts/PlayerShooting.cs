@@ -37,7 +37,12 @@ public class PlayerShooting : MonoBehaviour
         Rigidbody2D pbulletRB = pbullet.GetComponent<Rigidbody2D>();
         pbulletRB.velocity = direction * pbulletSpeed;
 
-        pbullet.GetComponent<playerbullet>().damage = pbulletDamage;
+        playerbullet playerBullet = gameObject.GetComponent<playerbullet>();
+
+        if(playerBullet!=null){
+            playerBullet.damage = pbulletDamage;
+        }
+        
     }
 
     private void ResetShooting()
