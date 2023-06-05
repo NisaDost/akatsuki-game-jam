@@ -12,6 +12,7 @@ public class enemy : MonoBehaviour
     public int bulletDamage = 10;
     public float shootingCooldown = 2f;
 
+    
     private bool canShoot = true;
 
     void Update()
@@ -37,5 +38,7 @@ public class enemy : MonoBehaviour
     {
         canShoot = true;
     }
+
+    
 
 }

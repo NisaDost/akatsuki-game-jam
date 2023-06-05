@@ -1,0 +1,41 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class playerbullet : MonoBehaviour
+{
+    public float damage = 10f;
+    private Vector3 direction;
+    public float speed = 10f;
+
+    public void ShootBullet(Vector3 dir)
+    {
+        direction = dir;
+
+    }
+
+    public void Update()
+    {
+        transform.position += direction * speed * Time.deltaTime;
+    }
+
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("enemy"))
+        {
+            enemyhealth enemyHealth = other.GetComponent<enemyhealth>();
+            if (enemyHealth != null)
+            {
+                enemyHealth.TakeDamage(damage);
+            }
+            Destroy(gameObject);
+        }
+    
+        else if (other.CompareTag("Ground")){
+            Destroy(gameObject);
+
+        }
+        
+    }
+}
